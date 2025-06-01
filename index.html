@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Youtube Player</title>
+    <link rel="stylesheet" href="./src/css/index.css">
+    <link rel="stylesheet" href="./src/css/fonts.css">
+
+    <!-- Prism.js dark theme -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        :root {
+            --bg-color: #f9fafb;
+            --text-color: #111827;
+            --link-color: #2563eb;
+            --nav-bg: #ffffff;
+            --border-color: #e5e7eb;
+            --code-bg: #f3f4f6;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #111827;
+                --text-color: #f9fafb;
+                --link-color: #60a5fa;
+                --nav-bg: #1f2937;
+                --border-color: #374151;
+                --code-bg: #1e293b;
+            }
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: row;
+            min-height: 100vh;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            width: 220px;
+            background: var(--nav-bg);
+            border-right: 1px solid var(--border-color);
+            padding: 2rem 1rem;
+            overflow-y: auto;
+        }
+
+        nav h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--link-color);
+        }
+
+        .container {
+            max-width: 800px;
+            padding: 2rem;
+            margin: auto;
+            flex: 1;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2 {
+            color: var(--text-color);
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        pre {
+            background: var(--code-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.95rem;
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .footer {
+            margin-top: 3rem;
+            padding: 1.5rem 1rem;
+            background: var(--nav-bg);
+            border-top: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-color);
+            font-size: 0.9rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1rem;
+            justify-content: space-between;
+        }
+
+        .footer h2 {
+            margin: 0 1rem 0 0;
+            font-size: 1.1rem;
+            flex: 0 0 auto;
+            min-width: 150px;
+        }
+
+        .footer>div {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex: 1 1 300px;
+            min-width: 200px;
+            flex-wrap: wrap;
+        }
+
+        .footer>div img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--border-color);
+            flex-shrink: 0;
+        }
+
+        .footer>div p {
+            margin: 0;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .footer>div a {
+            color: var(--link-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .footer>div a:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Responsive Styles */
+
+        @media (max-width: 1024px) {
+            nav {
+                width: 180px;
+                padding: 1.5rem 1rem;
+            }
+
+            .container {
+                max-width: 700px;
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
+            nav {
+                width: 100%;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+                padding: 1rem 1rem;
+                position: relative;
+            }
+
+            .container {
+                padding: 1.5rem 1rem;
+                max-width: 100%;
+            }
+
+            pre {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer h2 {
+                margin-bottom: 0.5rem;
+                min-width: auto;
+            }
+
+            .footer>div {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+                flex: 1 1 100%;
+            }
+
+            .footer>div p,
+            .footer>div a {
+                white-space: normal;
+            }
+
+            pre {
+                font-size: 0.85rem;
+                padding: 0.75rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <h3>Menu</h3>
+        <ul>
+            <li><a href="#use">How to Use</a></li>
+            <li><a href="#import">How to Import</a></li>
+            <li><a href="#lit">Using in Lit</a></li>
+            <li><a href="#react">Using in React</a></li>
+            <li><a href="#control">Control Dimensions</a></li>
+        </ul>
+    </nav>
+
+        <div class="container">
+            <h1>Lit-Player-Youtube</h1>
+            <p>The LitPlayerYoutube is a video player based on YouTube built with Lit, which uses the official YouTube API
+                to control the video.
+                It is lightweight, customizable, and easy to use both as a pure Web Component and via React with the
+                official wrapper.</p>
+
+            <h2 id="use">How to Use the Component?</h2>
+            <p>To use the component, you need to install it via npm.</p>
+            <pre><code class="language-bash">npm install lit-player-youtube</code></pre>
+
+            <h2 id="import">How to Import?</h2>
+            <p><strong>LIT:</strong></p>
+            <pre><code class="language-js">import {LitPlayerYoutube} from "lit-player-youtube"</code></pre>
+
+            <p><strong>REACT:</strong></p>
+            <pre><code class="language-js">import {LitPlayerYoutubeReact} from "lit-player-youtube"</code></pre>
+
+            <p>It was designed for rendering video easily, without needing to instantiate a class or call a method, just by
+                importing the component and placing its tag.</p>
+
+            <h2 id="lit">Using the component in <a href="https://lit.dev/" target="_blank">Lit</a></h2>
+            <pre><code class="language-html">&lt;lit-youtube-player sourceVideo="https://www.youtube.com/watch?v=tPBbeszlIXw"&gt;&lt;/lit-youtube-player&gt;</code></pre>
+
+            <h2 id="react">Using the component in <a href="https://pt-br.legacy.reactjs.org/" target="_blank">React</a></h2>
+            <pre><code class="language-jsx">&lt;LitPlayerYoutubeReact sourceVideo="https://www.youtube.com/watch?v=tPBbeszlIXw" /&gt;</code></pre>
+
+            <h2 id="control">Control Dimensions</h2>
+            <p>To control its width and height, just place it inside a div or similar element and set the dimensions; the
+                component is set to 100% width and height by default.</p>
+            <pre>
+                <code class="language-html">
+&lt;div style="width: 600px; height: 350px"&gt;
+    &lt;lit-youtube-player sourceVideo="https://www.youtube.com/watch?v=tPBbeszlIXw"&gt;&lt;/lit-youtube-player&gt;
+&lt;/div&gt;
+                </code>
+            </pre>
+
+            <p>Result:</p>
+            <img src="./src/image/exemplo-video.PNG" alt="Example of Lit YouTube Player" />
+
+            <div class="footer">
+                <h2>Desenvolvedor</h2>
+                <div>
+                    <img src="./src/image/myPhoto.jpg" alt="Leonardo Leal Araujo">
+                    <p>Leonardo Leal Araujo</p>
+
+                    <a href="https://github.com/LeonardoLAraujo" target="_blank" rel="noopener noreferrer">GIT HUB</a>
+                    <a href="https://www.linkedin.com/in/leonardo-leal-ara%C3%BAjo-2653b91b9/" target="_blank"
+                        rel="noopener noreferrer">LINKEDIN</a>
+                </div>
+                📄 License <br>
+                MIT © Leonardo Leal Araujo
+            </div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" crossorigin="anonymous"
+            referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    </body>
+</html>

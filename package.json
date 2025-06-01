@@ -1,0 +1,21 @@
+{
+  "name": "lit-player-youtube",
+  "private": false,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsup src/index.ts --format esm,cjs --dts",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@lit/react": "^1.0.7",
+    "ecv-component": "^0.0.9",
+    "lit": "^3.3.0"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.0",
+    "typescript": "~5.8.3",
+    "vite": "^6.3.5"
+  }
+}
