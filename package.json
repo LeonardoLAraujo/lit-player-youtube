@@ -1,12 +1,16 @@
 {
   "name": "lit-player-youtube",
-  "private": false,
-  "version": "0.0.19",
-  "type": "module",
+  "version": "0.0.39",
   "description": "LitPlayerYoutube is a lightweight and customizable Web Component built with Lit that provides a simple way to embed and control YouTube videos using the official YouTube API.",
   "types": "./dist/index.d.ts",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
   "license": "MIT",
   "homepage": "https://leonardolaraujo.github.io/lit-player-youtube/",
   "keywords": [
@@ -26,7 +30,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsup src/index.ts --format esm,cjs --dts",
+    "build": "tsup",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -38,6 +42,10 @@
     "tsup": "^8.5.0",
     "typescript": "~5.8.3",
     "vite": "^6.3.5"
+  },
+  "peerDependencies": {
+    "react": "^17.0.0 || ^18.0.0 || ^19.0.0" ,
+    "react-dom": "^17.0.0 || ^18.0.0 || ^19.0.0"
   },
   "repository": {
     "type": "git",

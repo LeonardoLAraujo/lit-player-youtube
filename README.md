@@ -59,7 +59,7 @@ REACT:
 Example controlling width and height:
 ```html
 <div style="width: 600px; height: 350px;">
-    <lit-youtube-player sourceVideo="https://www.youtube.com/watch?v=tPBbeszlIXw"></lit-youtube-player>
+    <lit-youtube-player video="https://www.youtube.com/watch?v=tPBbeszlIXw"></lit-youtube-player>
 </div>
 ```
 
@@ -72,7 +72,7 @@ import { LitPlayerYoutubeReact } from "lit-player-youtube";
 function App() {
   return (
     <div style={{ width: "600px", height: "350px" }}>
-      <LitPlayerYoutubeReact sourceVideo="https://www.youtube.com/watch?v=tPBbeszlIXw" />
+      <LitPlayerYoutubeReact video="https://www.youtube.com/watch?v=tPBbeszlIXw" />
     </div>
   );
 }
@@ -87,6 +87,8 @@ export default App;
 ## Controlling Dimensions
 You can control the player size by wrapping the component inside a container with specific dimensions, 
 as the component adapts to 100% width and height of its container.
+
+The component is also responsive.
 
 ## Contributing
 

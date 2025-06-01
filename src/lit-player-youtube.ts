@@ -1,7 +1,6 @@
 import {LitElement, html, css, TemplateResult, CSSResult} from 'lit';
 import { customElement, property, query, queryAll, state } from 'lit/decorators.js';
 import { LitYoutubeIcon, Icon } from './lit-youtube-icon';
-import './css/fonts.css';
 
 const HOURS_SECONDS: number = 3600;
 
@@ -187,7 +186,7 @@ export class LitPlayerYoutube extends LitElement{
             }
 
             span{
-                font-family: PoppinsRegular;
+                font-family: PoppinsRegular, sans-serif;
             }
 
 
@@ -219,7 +218,7 @@ export class LitPlayerYoutube extends LitElement{
                 background-color: #000000dc;
                 color: #fff;
                 cursor: pointer;
-                font-family: PoppinsRegular;
+                font-family: PoppinsRegular, sans-serif;
                 z-index: 55; 
             }
 
@@ -242,7 +241,7 @@ export class LitPlayerYoutube extends LitElement{
               
                 color: #fff;
                 transition: background-color 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
-                font-family: PoppinsRegular;
+                font-family: PoppinsRegular, sans-serif;
             }
 
             .playbackSpeed[speed="1"]{
@@ -268,7 +267,7 @@ export class LitPlayerYoutube extends LitElement{
                 padding: 0.5rem 1rem 0.5rem 2rem;
                 background-color: #000000dc;
                 transition: background-color 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
-                font-family: PoppinsRegular;
+                font-family: PoppinsRegular, sans-serif;
             }
 
             .quality:hover{
@@ -310,7 +309,7 @@ export class LitPlayerYoutube extends LitElement{
                     background-color: #000000dc;
                     color: #fff;
                     cursor: pointer;
-                    font-family: PoppinsRegular;
+                    font-family: PoppinsRegular, sans-serif;
                     z-index: 5; 
                     padding-left: 1rem;
                     
@@ -527,16 +526,16 @@ export class LitPlayerYoutube extends LitElement{
     @queryAll(".quality")
     private _listPlaybackQuality!: Array<HTMLDivElement>;
 
-    @property({attribute: false})
-    sourceVideo: string = "https://www.youtube.com/watch?v=tPBbeszlIXw";
+    @property({ type: String })
+    video = '';
 
     protected firstUpdated(): void {
-        this._videoDoId = this._youTubeGetID(this.sourceVideo);
-        
+        this._videoDoId = this._youTubeGetID(this.video);
+            
         this.controlFillVolumeAudio();
         this.iconPlayerVolumeCurrent();
     }
-
+    
     /***
      * Instancia o Iframe do youtube
      * @private

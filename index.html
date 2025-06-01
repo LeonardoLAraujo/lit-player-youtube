@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Youtube Player</title>
     <link rel="stylesheet" href="./src/css/index.css">
-    <link rel="stylesheet" href="./src/css/fonts.css">
 
     <!-- Prism.js dark theme -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
@@ -294,14 +293,17 @@
             <p><strong>REACT:</strong></p>
             <pre><code class="language-js">import {LitPlayerYoutubeReact} from "lit-player-youtube"</code></pre>
 
+            <p><strong>Or in this way:</strong></p>
+             <pre><code class="language-js">import "lit-player-youtube"</code></pre>
+
             <p>It was designed for rendering video easily, without needing to instantiate a class or call a method, just by
                 importing the component and placing its tag.</p>
 
             <h2 id="lit">Using the component in <a href="https://lit.dev/" target="_blank">Lit</a></h2>
-            <pre><code class="language-html">&lt;lit-youtube-player sourceVideo="https://www.youtube.com/watch?v=tPBbeszlIXw"&gt;&lt;/lit-youtube-player&gt;</code></pre>
+            <pre><code class="language-html">&lt;lit-youtube-player video="https://www.youtube.com/watch?v=tPBbeszlIXw"&gt;&lt;/lit-youtube-player&gt;</code></pre>
 
             <h2 id="react">Using the component in <a href="https://pt-br.legacy.reactjs.org/" target="_blank">React</a></h2>
-            <pre><code class="language-jsx">&lt;LitPlayerYoutubeReact sourceVideo="https://www.youtube.com/watch?v=tPBbeszlIXw" /&gt;</code></pre>
+            <pre><code class="language-jsx">&lt;LitPlayerYoutubeReact video="https://www.youtube.com/watch?v=tPBbeszlIXw" /&gt;</code></pre>
 
             <h2 id="control">Control Dimensions</h2>
             <p>To control its width and height, just place it inside a div or similar element and set the dimensions; the
@@ -309,7 +311,7 @@
             <pre>
                 <code class="language-html">
 &lt;div style="width: 600px; height: 350px"&gt;
-    &lt;lit-youtube-player sourceVideo="https://www.youtube.com/watch?v=tPBbeszlIXw"&gt;&lt;/lit-youtube-player&gt;
+    &lt;lit-youtube-player video="https://www.youtube.com/watch?v=tPBbeszlIXw"&gt;&lt;/lit-youtube-player&gt;
 &lt;/div&gt;
                 </code>
             </pre>

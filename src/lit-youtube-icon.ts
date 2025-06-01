@@ -65,8 +65,24 @@ export enum Icon  {
 @customElement('lit-youtube-icon')
 export class LitYoutubeIcon extends LitElement{
 
+    override connectedCallback() {
+        super.connectedCallback();
+        this.ensureFontLoaded();
+    }
+
+    private ensureFontLoaded() {
+        if (!document.getElementById('material-symbols-font')) {
+            const link = document.createElement('link');
+            link.id = 'material-symbols-font';
+            link.rel = 'stylesheet';
+            link.href = 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0';
+            document.head.appendChild(link);
+        }
+    }
+
     static styles?: CSSResultGroup | undefined = [
         css`
+
             @font-face {
                 font-family: 'Material Symbols Outlined';
                 font-style: normal;
@@ -132,8 +148,8 @@ export class LitYoutubeIcon extends LitElement{
 
                 .material-symbols-outlined{
                     font-variation-settings:
-                    'FILL' ${this.filled ? 1: 0},
-                    'wght' 400,
+                     'FILL' 1,
+                    'wght' 700,
                     'GRAD' 0,
                     'opsz' 24;
                     font-size: ${this.size}px!important;

@@ -1,14 +1,11 @@
 import { defineConfig } from 'tsup';
 
 export default defineConfig({
-    entry: ['src/index.ts'],
-    outDir: 'dist',
-    format: ['esm', 'cjs'],
-    dts: true,
-    splitting: false,
-    clean: true,
-    sourcemap: true,
-    target: 'esnext',
-    shims: false,
-    skipNodeModulesBundle: true
+  entry: ['src/index.ts'],  // ou seu arquivo de entrada
+  format: ['esm', 'cjs'],
+  dts: true,
+  sourcemap: true,
+  outDir: 'dist',
+  clean: true,
+  external: ['react', 'react-dom'],   // 👈 ESSENCIAL!
 });
