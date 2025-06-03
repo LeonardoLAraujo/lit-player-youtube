@@ -24,6 +24,7 @@ Lightweight, customizable, and easy to use, it can be used as a pure Web Compone
 - [Example](#example)
 - [Contributing](#contributing)
 - [Developer](#developer)
+- [Documentation - Page](#Documentation - Page)
 - [License](#license)
 
 ---
