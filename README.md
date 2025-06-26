@@ -59,7 +59,7 @@ REACT:
 Example controlling width and height:
 ```html
 <div style="width: 600px; height: 350px;">
-    <lit-youtube-player video="https://www.youtube.com/watch?v=tPBbeszlIXw"></lit-youtube-player>
+    <lit-player-youtube video="https://www.youtube.com/watch?v=tPBbeszlIXw"></lit-player-youtube>
 </div>
 ```
 
