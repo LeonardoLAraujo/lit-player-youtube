@@ -102,5 +102,7 @@ Contributions are very welcome! To contribute, follow these steps:
 ## Documentation - Page
 https://leonardolaraujo.github.io/lit-player-youtube/
 
+https://www.npmjs.com/package/lit-player-youtube
+
 ## License
 MIT © Leonardo Leal Araujo
